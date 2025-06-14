@@ -4,8 +4,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
-})->name('home');
+    return view('welcome');
+})->name('welcome');
 
 Route::get('/calendar', function () {
     return view('calendar');
