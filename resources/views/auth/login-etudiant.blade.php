@@ -1,36 +1,118 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion Étudiant</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f3f4f6;
-        }
-        .card {
-            border-radius: 1rem;
-        }
-    </style>
-</head>
-<body class="d-flex justify-content-center align-items-center vh-100">
-    <div class="card shadow p-4" style="width: 400px;">
-        <h2 class="text-center text-success mb-4">Connexion Étudiant</h2>
+@extends('layouts.app')
+
+@section('title', 'Connexion Étudiant')
+
+@section('content')
+<style>
+    body {
+        background: linear-gradient(to right, #e0e7ff, #dbeafe);
+    }
+
+    .login-wrapper {
+        /* min-height: 100vh; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-card {
+        width: 400px;
+        height: 420px;
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .login-header {
+        text-align: center;
+    }
+
+    .login-header i {
+        font-size: 2rem;
+        color: #1e3a8a;
+        margin-bottom: 0.3rem;
+    }
+
+    .login-header h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+        color: #1e3a8a;
+        font-weight: bold;
+    }
+
+    .login-header p {
+        font-size: 0.85rem;
+        color: #6b7280;
+        margin-bottom: 0;
+    }
+
+    .form-label {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #1e3a8a;
+        margin-bottom: 0.3rem;
+    }
+
+    .form-control {
+        padding: 0.45rem 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .btn-login {
+        background-color: #1e3a8a;
+        color: white;
+        font-weight: 500;
+        margin-top: 0.7rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-login:hover {
+        background-color: #3b4cca;
+    }
+
+    .login-footer {
+        text-align: center;
+        font-size: 0.85rem;
+    }
+
+    .login-footer a {
+        color: #1e3a8a;
+        text-decoration: none;
+    }
+
+    .login-footer a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="login-header">
+            <i class="bi bi-person-circle"></i>
+            <h3>Connexion Étudiant</h3>
+            <p>Accédez à votre espace</p>
+        </div>
+
         <form method="POST" action="#">
             @csrf
-            <div class="mb-3">
+            <div class="mb-2">
                 <label for="email" class="form-label">Adresse email</label>
-                <input type="email" class="form-control" id="email" placeholder="etudiant@ensa.com">
+                <input type="email" class="form-control" id="email" name="email" placeholder="etudiant@ensa.com" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-2">
                 <label for="password" class="form-label">Mot de passe</label>
-                <input type="password" class="form-control" id="password" placeholder="********">
+                <input type="password" class="form-control" id="password" name="password" placeholder="********" required>
             </div>
-            <button type="submit" class="btn btn-success w-100">Se connecter</button>
+            <button type="submit" class="btn btn-login w-100">Se connecter</button>
         </form>
-        <div class="mt-3 text-center">
-            <a href="{{ route('login.admin') }}">Je suis un admin</a>
+
+        <div class="login-footer mt-2">
+            <a href="{{ route('login.admin') }}">Je suis un administrateur</a>
         </div>
     </div>
-</body>
-</html>
+</div>
+@endsection
